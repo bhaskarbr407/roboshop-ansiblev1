@@ -1,0 +1,13 @@
+- name: setup frontend component
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+    - copy: ansible configuration file
+      ansible.builtin.copy:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
+
